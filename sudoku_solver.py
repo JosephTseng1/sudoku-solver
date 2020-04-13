@@ -225,7 +225,7 @@ def sudoku_solver(sudoku_grid):
 sudoku_grid = []
 
 try:
-    file_name = input("Enter the file name:" )
+    file_name = input("Enter the file name: " )
 except FileNotFoundError:
     pass
 
