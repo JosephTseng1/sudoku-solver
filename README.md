@@ -1,5 +1,7 @@
 # sudoku-solver
 
+This AI python program uses backtracking along with forward checking, degree, and minimum remaining value heuristics to solve sudoku puzzles. 
+
 Basically, to prepare the input file, you have to use spaces to separate the numbers. If a space is blank, it is 0, else there is a number. Make sure each row is on a different line. It is assumed to be digits from 0-9 and the dimensions are 9 X 9. Also, the input is assumed to be a text file. 
 
 For example, “input_1.txt”, “file.txt”, etc. 
