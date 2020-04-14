@@ -1,6 +1,5 @@
 #Removes the value from the constrained spaces and updates the remain_values_list
 def reduce_values(row, column, value, remain_values_list):
-    
     remain_values_list[column+row*9] = [0]
                                                                                                                                                                             
     for x in remain_values_list[row*9:row*9+9]:
@@ -23,13 +22,11 @@ def reduce_values(row, column, value, remain_values_list):
             try:                                                                                                                                                            
                 remain_values_list[block_column*3+j+(block_row*3+i)*9].remove(value)
             except ValueError:                                                                                                                                              
-                pass                                                                                                                                                        
-                                                                                                                                                                            
+                pass
     return remain_values_list
                                  
 #For every space in the grid, it has a list of every possible remaining value
 def obtain_remain_values(sudoku_grid):
-
     remain_values_list = []
 
     [remain_values_list.append(list(range(1,10))) for i in range(81)]
@@ -39,12 +36,10 @@ def obtain_remain_values(sudoku_grid):
             if sudoku_grid[row][column] != 0:
                 value = sudoku_grid[row][column]
                 remainValuesList = reduce_values(row, column, value, remain_values_list)
-
     return remain_values_list
 
 #For each contrained cell, we want to see the frequency for each  value
 def obtain_least_constrain_values(row, column, values, remain_values_list):
-
     least_constrain_vals_list = []
 
     for value in values:
@@ -76,13 +71,11 @@ def obtain_least_constrain_values(row, column, values, remain_values_list):
                     count += 1
 
         least_constrain_vals_list.append(count)
-
     return least_constrain_vals_list
 
 #Getting the degree value, AKA the number of values
 #that the space is contrained by
 def obtain_degree_value(space, sudoku_grid):
-
     row = space[0]
     column = space[1]
 
@@ -109,12 +102,10 @@ def obtain_degree_value(space, sudoku_grid):
                 continue
             if sudoku_grid[block_row*3+i][block_column*3+j] == 0:
                 degree_value+=1
-
     return degree_value
 
 #It checks to see if the removed value is the only one remaining
 def forward_checking_heuristic(row, column, value, remain_values_list):
-
     for i in range(9):
         if i == column:
             continue
@@ -216,7 +207,6 @@ def sudoku_solver(sudoku_grid):
                 return True
             else:
                 sudoku_grid[row][column] = 0
-                
     return False
 
 #Obtaining the file from the user, gives error if it does not exist.
@@ -229,11 +219,9 @@ try:
 except FileNotFoundError:
     pass
 
-
 with open(file_name, "r") as ins:
     content = ins.readlines()
     content = [x.strip() for x in content]
-
 
 for line in content:
     row = line.split(' ')
